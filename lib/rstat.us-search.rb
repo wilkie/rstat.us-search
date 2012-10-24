@@ -2,7 +2,7 @@ require 'propeller'
 
 module RstatUs
   module Search
-    def index_name
+    def self.index_name
       @@index_name
     end
 
