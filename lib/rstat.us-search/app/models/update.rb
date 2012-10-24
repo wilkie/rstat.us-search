@@ -1,3 +1,9 @@
+require './app/models/update'
+
+class << Update
+  remove_method :search
+end
+
 class Update
   include Tire::Model::Search
   include Tire::Model::Callbacks
