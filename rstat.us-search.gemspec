@@ -4,7 +4,7 @@ $LOAD_PATH.unshift(lib) unless $LOAD_PATH.include?(lib)
 require 'rstat.us-search/version'
 
 Gem::Specification.new do |gem|
-  gem.name          = "rstat.us-foo"
+  gem.name          = "rstat.us-search"
   gem.version       = RstatUs::Search::VERSION
   gem.authors       = ["wilkie"]
   gem.email         = ["wilkie05@gmail.com"]
