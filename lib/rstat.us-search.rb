@@ -2,16 +2,20 @@ require 'propeller'
 
 module RstatUs
   module Search
+    def index_name
+      @@index_name
+    end
+
     def self.init
       if ENV['BONSAI_INDEX_URL']
         Tire.configure do
           url "http://index.bonsai.io"
         end
-        ELASTICSEARCH_INDEX_NAME = ENV['BONSAI_INDEX_URL'][/[^\/]+$/]
+        @@index_name = ENV['BONSAI_INDEX_URL'][/[^\/]+$/]
       else
         app_name = Rails.application.class.parent_name.underscore.dasherize
         app_env = Rails.env
-        ELASTICSEARCH_INDEX_NAME = "#{app_name}-#{app_env}"
+        @@index_name = "#{app_name}-#{app_env}"
       end
     end
   end
@@ -20,7 +24,7 @@ end
 class Update
   include Tire::Model::Search
   include Tire::Model::Callbacks
-  index_name ELASTICSEARCH_INDEX_NAME
+  index_name RstatUs::Search.index_name
 
   # Will override the def self.search (hopefully)
 end
