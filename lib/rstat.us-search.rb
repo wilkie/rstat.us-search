@@ -20,6 +20,23 @@ module RstatUs
 
       require 'rstat.us-search/app/models/update'
     end
+
+    def self.test_initialize
+      class << self
+        class ::Update
+          # This makes the document searchable immediately but affects
+          # performance in production.
+          after_save lambda { tire.index.refresh }
+        end
+      end
+    end
+
+    def self.test_setup
+    end
+
+    def self.test_teardown
+      Tire::Index.new(@@index_name).delete
+    end
   end
 end
 
