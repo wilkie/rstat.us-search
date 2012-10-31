@@ -23,4 +23,4 @@ module RstatUs
   end
 end
 
-Propeller::AddonManager.register RstatUs::Search
+Propeller::AddonManager.register :"rstat.us-search", RstatUs::Search
