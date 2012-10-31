@@ -1,0 +1,9 @@
+name: "rstat.us-search"
+
+configuration:
+  - section: "Search"
+    options:
+      - name: foo
+        description: "Search bah"
+        type: string
+        default: Searchy-search
